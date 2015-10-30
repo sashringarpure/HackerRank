@@ -1,0 +1,8 @@
+ClassNotFoundException: Changed the selenium-java jars version from 2.42 to 2.39
+ElementNotFound/no such element exception: Explicit wait
+An Invalid or Illegal string was specified: Changed the locator from CSS to ID because CSS wasnt getting converted to XPATH in html4.
+Exception in thread "main" org.openqa.selenium.InvalidSelectorException: Compound class names are not supported. Consider searching for one class name and filtering the results or use CSS selectors.
+org.openqa.selenium.interactions.MoveTargetOutOfBoundsException: Offset within element cannot be scrolled into view
+org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with. Tried with complete cssPath/XPath Thread.Sleep(10000) and it worked.There were multiple elements present for a single search box, so, tried with all of them.
+UnreacheableBrowserException for firefox:Updated from wedriver jar version 2.39 to 2.42(had upgraded FF to version 31 and then started seeing this err mesg)
+Unsupported version: Was compiling with JAVAC version 1.7 and running with JAVA version 1.6
