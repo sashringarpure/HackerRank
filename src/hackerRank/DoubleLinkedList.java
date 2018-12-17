@@ -14,6 +14,7 @@ public class DoubleLinkedList {
 		DoubleLinkedList.Employee marySmith = dll.new Employee("Mary","Smith",789);
 		DoubleLinkedList.Employee mikeWilson = dll.new Employee("Mike","Wilson",102);
 		DoubleLinkedList.Employee billGates = dll.new Employee("Bill","Gates",987);
+		DoubleLinkedList.Employee addBefore = dll.new Employee("Added","Before",999);
 		
 		dll.addToFront(janeJones);
 		dll.addToFront(johnDoe);
@@ -31,6 +32,10 @@ public class DoubleLinkedList {
 		dll.printList();
 		
 		dll.removeFromEnd();
+		
+		dll.printList();
+		
+		dll.addBefore(addBefore, johnDoe);
 		
 		dll.printList();
 	}
@@ -92,6 +97,38 @@ public class DoubleLinkedList {
 		size--;
 		removedNode.setPrevious(null);
 		return removedNode;
+	}
+	
+	public boolean addBefore(Employee newEmployee, Employee existingEmployee) {
+		//if list is empty
+		if (head == null) {
+			return false;
+		}
+		//iterate through the list to find the existing employee
+		EmployeeNode current = head;
+		while (current != null && !current.getEmployee().equals(existingEmployee)) {
+			current = current.getNext();
+		}
+		
+		//if employee does not exist, return false
+		if (current == null) {
+			return false;
+		}
+		
+		EmployeeNode en = new EmployeeNode(newEmployee); //create employee node instance
+		//sequencing is important
+		en.setPrevious(current.getPrev()); //set's the previous of "en" to point to current's previous 
+		en.setNext(current); //sets the next of "en" to point to current.
+		current.setPrevious(en); //sets the previous of current to point to "en"
+		
+		if (head == current) { //if new node is to be added before head node then make "en" head node
+			head = en;
+		} else {
+			en.getPrev().setNext(en); //set's "en" previous to point to "en"
+		}
+		size++;
+		return true;
+		
 	}
 	
 	public void printList() {
