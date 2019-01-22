@@ -2,11 +2,13 @@ package hackerRank;
 
 public class LinkedList {
 	
+//	
 	private EmployeeNode head;
 	private int size;
 	
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		
+//		Create employees to be added to linked list. Employee is defined as a private class.
 		LinkedList ll = new LinkedList();
 		LinkedList.Employee janeJones = ll.new Employee("Jane","Jones",123);
 		LinkedList.Employee johnDoe = ll.new Employee("John","Doe",456);
