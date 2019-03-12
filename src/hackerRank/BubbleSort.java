@@ -52,9 +52,10 @@ public class BubbleSort {
             int n = intArray.length;
             int temp = 0;
             System.out.println("");
-            for(int i=0; i < n; i++) {
+            for(int i=0; i < n; i++) { //loop till the length of the array. 
             	
-                    for(int j=1; j < (n-i); j++) {
+                    for(int j=1; j < (n-i); j++) { //start the loop from 1 and loop till
+//                    	current index/value of i
 
                             if(intArray[j-1] > intArray[j]){
                                     //swap the elements!

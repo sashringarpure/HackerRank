@@ -10,9 +10,9 @@ public class reverseWordsInAString {
 	}
 	
 	public void reverse() {
-		String[] s1 = s.split(" ");
+		String[] s1 = s.split(" "); //create an array of words based on space delimiter
 		ArrayList<String> al = new ArrayList<String>();
-		for (int i = 0 ; i < s1.length; i++) {
+		for (int i = 0 ; i < s1.length; i++) { //create array list based out of string array.
 			al.add(s1[i]);
 		}
 		
