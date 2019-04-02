@@ -1,4 +1,8 @@
 package hackerRank;
+import java.util.*;
+import java.util.LinkedList;
+
+
 
 public class Palindrome {
 
@@ -63,6 +67,28 @@ public class Palindrome {
 			}
 				
 			
+	}
+	
+//	Push characters of a string into Stack and Queue
+//	Pop the last character from stack and remove the first character from queue and compare 
+	public static boolean checkForPalindrome(String string) {
+		LinkedList<Character> stack = new java.util.LinkedList<Character>();
+		LinkedList<Character> queue = new java.util.LinkedList<Character>();
+		String lowerCase = string.toLowerCase();
+		
+		for (int i = 0 ; i < lowerCase.length() ; i ++) {
+			if ( lowerCase.charAt(i) <= 'a' && lowerCase.charAt(i) <= 'z' ) {
+				stack.push(lowerCase.charAt(i));
+				queue.addLast(lowerCase.charAt(i));
+			}
+		}
+		
+		while ( !stack.isEmpty()) {
+			if ( !stack.pop().equals(queue.removeFirst()))
+				return false;
+		}
+		
+		return true;
 	}
 
 
