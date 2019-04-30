@@ -1,5 +1,10 @@
 package hackerRank;
 
+//Time Complexity:
+//Constant time to add items : Ologn
+//Delete:O of n (search) times log n (fix heap)
+
+
 public class HeapMax {
 
 	private int[] heap;
@@ -8,6 +13,23 @@ public class HeapMax {
 	public HeapMax(int capacity) {
 		heap = new int[capacity];
 	}
+	
+	public static void main(String[] args) {
+		HeapMax heap = new HeapMax(10);
+		heap.insert(80);
+		heap.insert(75);
+		heap.insert(60);
+		heap.insert(68);
+		heap.insert(55);
+		heap.insert(40);
+		heap.insert(52);
+		heap.insert(67);
+		heap.printHeap();
+		heap.delete(0);
+		heap.printHeap();
+		System.out.println(heap.peek());
+	}
+	
 //	check the size of the heap
 	public boolean isFull() {
 		return size == heap.length;
@@ -122,5 +144,22 @@ public class HeapMax {
 //		As per the formula, 1 returns left child and 2 returns right child.
 		return 2 * index + (left ? 1 : 2) ;
 	}
+	
+	public void printHeap() {
+		for (int i = 0 ; i < size; i++ ) {
+			System.out.print(heap[i]);
+			System.out.print(", ");
+		}
+		System.out.println();
+	}
+	
+	public int peek() {
+		if (isEmpty()) {
+			throw new IndexOutOfBoundsException("Heap is Emptyy..");
+		}
+		
+		return heap[0];
+	}
+	
 
 }
