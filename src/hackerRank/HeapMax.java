@@ -161,5 +161,17 @@ public class HeapMax {
 		return heap[0];
 	}
 	
+	public void sort() {
+		int lastHeapIndex = size - 1 ;
+		for (int i = 0 ; i < lastHeapIndex ; i++ ) {
+//			heap is being reduced by one on each iteration.
+			int tmp = heap[0]; //largest value
+			heap[0] = heap[lastHeapIndex - i ]; 
+			heap[lastHeapIndex - i ] = tmp ;
+//			start from the root because we swapped the root
+			fixHeapBelow(0,lastHeapIndex-i-1);
+		}
+	}
+	
 
 }
