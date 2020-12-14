@@ -20,7 +20,7 @@ public class MergeSort {
 		System.out.println(" ************* mid index: " + mid);
 		mergeSort(input,start,mid);
 		System.out.println("b4 second merge sort.");
-		mergeSort(input,mid,end);
+		mergeSort(input,mid+1,end);
 		merge(input,start,mid,end);
 	}
 	
@@ -37,10 +37,11 @@ public class MergeSort {
 		while (i < mid && j < end) {
 			temp[tempIndex++] = input[i] <= input[j] ? input[i++] : input[j++] ;
 		}
-		
+
 		System.arraycopy(input,i,input,start+tempIndex,mid-i);
 		System.arraycopy(temp,0,input,start,tempIndex);
 		System.out.println("***Out method Merge" + Arrays.toString(input));
+
 	}
 
 }

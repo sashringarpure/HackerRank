@@ -1,6 +1,6 @@
 package hackerRank;
 
-public class FindDuplicateChars {
+public class FindConsecutiveDuplicateChars {
 
 	public static void main(String[] args) {
 		int index = 0;
@@ -18,7 +18,7 @@ public class FindDuplicateChars {
 						continue ;  //continue the loop to check if the next char is a dupe
 					}
 					else {
-						i = j-1 ;  //if char is not a dupe then reset the outer loop to the index of the inner loop
+						i = j-1 ;  //if char is not a dupe then reset the outer loop to the index of the inner loop. I will be incremented to the value of J by the for loop.
 						break;  //break from the inner loop
 					}   
 				}

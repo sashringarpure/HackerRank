@@ -28,8 +28,32 @@ Collections:
           for (String s : gfg.values() )
           Iterator<Map.Entry<String,String>> i = gfg.entrySet.iterator(); ==> while ( i.hasNext() ) {}
           gfg.containsKey(Object); gfg.put(<<key>>,<<value>>);
-    Sort a map:
-        HashMap<Integer, String> map = new HashMap<>(); TreeMap<Integer, String> treeMap = new TreeMap<>(map);
+    Sort a map by Keys:
+        HashMap<Integer, String> map = new HashMap<Integer, String>();
+        Map<Integer, String> m3 = new TreeMap<Integer, String>(map);
+        Set s1 = m3.entrySet();
+        Iterator it = s1.iterator();
+        while (it.hasNext()) {
+        	Map.Entry me = (Map.Entry) it.next();
+        	System.out.print(me.getKey()+"="+me.getValue());
+        }
+    Sort a map by values:
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        List<Map.Entry<Character,Integer>> ll = new LinkedList<Map.Entry<Character,Integer>> (map.entrySet);
+        Collections.sort(ll, new Comparator<Map.Entry<Character,Integer>> () {
+            public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+                return ((Comparable) ((Map.Entry) (o1)).getValue()).compareTo(((Map.Entry) (o2)).getValue());
+            }
+        });
+        HashMap<Character,Integer> m4 = new LinkedHashMap<Character, Integer>();
+        Iterator it1 = ll.iterator();
+        while (it1.hasNext()) {
+        	Map.Entry entry = (Map.Entry) it1.next();
+        	m4.put((Character) entry.getKey(), (Integer) entry.getValue());
+        }
+    Convert Map to EntrySet:
+        HashMap<String, String> map = new HashMap<>();
+        List<Map.Entry<String,String>> ll = new LinkedList<Map.Entry<String,String>>(map.entrySet());
     Sorted Set Descending order:
         Set<Integer> random = new HashSet<Integer>(); Set<Integer> sorted = new TreeSet<Integer>(new Comparator<Integer>() {@Override
                                                                                                                                         public int compare(Integer o1, Integer o2) {
