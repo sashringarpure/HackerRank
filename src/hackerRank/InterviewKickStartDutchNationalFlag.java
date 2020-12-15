@@ -2,6 +2,14 @@ package hackerRank;
 
 /*
 
+Dutch National Flag
+Given some balls of three colors arranged in a line, rearrange them such that all the red balls go first, then green and then blue ones.
+Do rearrange the balls in place. A solution that simply counts colors and overwrites the array is not the one we are looking for.
+This is an important problem in search algorithms theory proposed by Dutch computer scientist Edsger Dijkstra. Dutch national flag has three colors (albeit different from ones used in this problem).
+Example
+Input: [G, B, G, G, R, B, R, G]
+Output: [R, R, G, G, G, G, B, B]
+
 Quick Sort Steps:
 1. find the pivot index:
   0. Specify the recursion termination criteria: If the difference between the start and the end index of the array is less than
@@ -30,39 +38,38 @@ Quick Sort Steps:
   f. Return the location of the pivot element.
 2. Repeat the above steps recursively for the elements to the left and to the right of the pivot element.
  */
-public class quickSort {
 
-	public static void main(String[] args) {
-		int[] intArray = {20,35,-15,7,55,1,-22} ;  //unsorted array
-		
-		quicksort(intArray,0,intArray.length);
-		
-	}
-	
-	public static void quicksort(int[] input, int start, int end) {
-		if(end - start < 2) return;
-		
-		int pivotIndex = partition(input, start, end); //find pivot element
-		
-		quicksort(input, start, pivotIndex);	
-		quicksort(input, pivotIndex+1, end);
-	}
-	
-	public static int partition(int[] input, int start, int end) {
-		int pivot = input[start] ; //use first element as the pivot.
-		int i = start;
-		int j = end;
-		
-		while (i<j) {
-			while (i<j && input[--j] >= pivot); //empty loop body
-			if (i<j) input[i] = input[j];
-			while (i<j && input[++i] <= pivot); //empty loop body
-			if (i<j) input[j] = input[i];
-		}
-		
-		input[j] = pivot;
-		return j;
-			
-	}
-	
+public class InterviewKickStartDutchNationalFlag {
+
+    public static void main(String[] args) {
+
+        char[] arr = {'G','B','G','G','R','B','R','G'};
+        quickSort(arr, 0, arr.length);
+        for ( char ch : arr) System.out.print(ch);
+
+    }
+
+    public static void quickSort(char[] arr, int start, int end) {
+        if(end - start < 2) return;
+        int pivot_index = quickSortHelper(arr, start, end);
+        quickSort(arr, start, pivot_index);
+        quickSort(arr, pivot_index+1, end);
+
+    }
+
+    public static int quickSortHelper(char[] arr, int start, int end) {
+        char pivot_element = arr[start];
+        int i = start;
+        int j = end;
+
+        while (i<j) {
+            while (i<j && arr[--j] <= pivot_element);
+            arr[i] = arr[j];
+            while (i<j && arr[++i] >= pivot_element);
+            arr[j] = arr[i];
+        }
+
+        arr[j] = pivot_element;
+        return j;
+    }
 }
