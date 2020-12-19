@@ -1,46 +1,97 @@
 package hackerRank;
 
+/*
+For int[] arr = {5,4,3,2,1} :-
+
+First Merge Sort
+Start/mid, right
+1)0,4
+2)0,2
+3)0,1
+4)0,0
+9)3,3
+
+
+Second Merge Sort
+5)1,1
+7)2,2
+10)4,4
+
+
+Merge Call:
+Left,mid,right
+6)0,0,1
+8)0,1,2
+11)3,3,4
+12)0,2,4
+
+ */
+
 import java.util.Arrays;
 
 public class MergeSort {
 	
 	
 	public static void main(String[] args) {
-		int[] intArray = {20,35,-15,7,55,1,-22};
-		mergeSort(intArray,0,intArray.length);
+//		int[] arr = {20,35,-15,7,55,1,-22};
+		int[] arr = {5,4,3,2,1};
+		mergeSort(arr,0,arr.length-1);
+		System.out.println(Arrays.toString(arr));
 	}
 
-	public static void mergeSort(int[] input, int start, int end) {
-		System.out.println(" In method - start index :" + start + " end index:" + end );
-		if (end - start < 2 )  {
-			System.out.println("In If loop...Returning" + " start : " + start + " end: " + end);
-			return ;
+	public static void mergeSort(int[] arr, int start, int right) {
+		if (start < right) {
+
+			int mid = (start + right) / 2;
+
+			mergeSort(arr, start, mid);
+			mergeSort(arr, mid + 1, right);
+
+			merge(arr, start, mid, right);
 		}
-		int mid = (start + end)/2;
-		System.out.println(" ************* mid index: " + mid);
-		mergeSort(input,start,mid);
-		System.out.println("b4 second merge sort.");
-		mergeSort(input,mid+1,end);
-		merge(input,start,mid,end);
 	}
-	
-	public static void merge(int[] input, int start, int mid, int end ) {
-		
-		System.out.println("***In method Merge" + Arrays.toString(input));
-		if (input[mid-1] <= input[mid]) return;
-		
-		int i = start;
-		int j = mid;
-		int tempIndex = 0;
-		
-		int[] temp = new int[end - start];
-		while (i < mid && j < end) {
-			temp[tempIndex++] = input[i] <= input[j] ? input[i++] : input[j++] ;
+
+	public static void merge(int[] arr, int left, int mid, int right) {
+
+
+		int len1 = mid - left + 1;
+		int len2 = right - mid;
+
+		int leftArr[] = new int[len1];
+		int rightArr[] = new int[len2];
+
+		for (int i = 0; i < len1; i++)
+			leftArr[i] = arr[left + i];
+		for (int j = 0; j < len2; j++)
+			rightArr[j] = arr[mid + 1 + j];
+
+		int i, j, k;
+		i = 0;
+		j = 0;
+		k = left;
+
+		while (i < len1 && j < len2) {
+			if (leftArr[i] <= rightArr[j]) {
+				arr[k] = leftArr[i];
+				i++;
+			} else {
+				arr[k] = rightArr[j];
+				j++;
+			}
+			k++;
 		}
 
-		System.arraycopy(input,i,input,start+tempIndex,mid-i);
-		System.arraycopy(temp,0,input,start,tempIndex);
-		System.out.println("***Out method Merge" + Arrays.toString(input));
+		while (i < len1) {
+			arr[k] = leftArr[i];
+			i++;
+			k++;
+		}
+
+		while (j < len2) {
+			arr[k] = rightArr[j];
+			j++;
+			k++;
+		}
 
 	}
 
