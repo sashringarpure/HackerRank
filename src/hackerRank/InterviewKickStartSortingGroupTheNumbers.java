@@ -63,7 +63,7 @@ package hackerRank;
  *
  */
 
-public class InterviewKickStartGroupTheNumbers {
+public class InterviewKickStartSortingGroupTheNumbers {
 
     public static void main(String[] args) {
 

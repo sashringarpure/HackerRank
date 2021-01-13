@@ -78,7 +78,7 @@ greater than the corresponding comparison element from array-1)
   b. Decrease array-2 insertion index
   c. Decrease array-1 index
  */
-public class InterviewKickstartMergeOneSortedArryaIntoAnother {
+public class InterviewKickStartSortingMergeOneSortedArryaIntoAnother {
 
     public static void main(String[] args) {
         int[] arr1 = {1,2,3,7};
