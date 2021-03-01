@@ -1,5 +1,7 @@
 package hackerRank;
-
+//02/03: 1230 - 230, 4:30 - 5
+//02/04: 3:00 pm
+//02/05: 12:30 pm pst
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
