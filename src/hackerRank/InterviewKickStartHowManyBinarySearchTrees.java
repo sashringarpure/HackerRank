@@ -74,7 +74,7 @@ public class InterviewKickStartHowManyBinarySearchTrees {
         int n = 16;
         Long l1;
         BigInteger l = BigInteger.valueOf(Long.valueOf(n));
-        BigInteger res = factorial(BigInteger.TWO.multiply(l)).divide(factorial(l).multiply(factorial(BigInteger.ONE.add(l))));
+        BigInteger res = factorial(BigInteger.valueOf(2).multiply(l)).divide(factorial(l).multiply(factorial(BigInteger.valueOf(1).add(l))));
         l1 = res.longValue();
         System.out.print(l1);
     }

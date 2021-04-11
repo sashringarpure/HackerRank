@@ -1,12 +1,6 @@
 package hackerRank;
 
-import jdk.jshell.JShell;
-
-import java.beans.PropertyEditorSupport;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.regex.Pattern;
 
 public class InterviewKickStartRecursionGenerateAllPossibleExpressions {
 
