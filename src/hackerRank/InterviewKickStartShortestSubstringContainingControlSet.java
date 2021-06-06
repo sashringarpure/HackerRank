@@ -3,6 +3,11 @@ package hackerRank;
 import java.util.HashSet;
 import java.util.Set;
 
+/*
+First input is any string and second input is a control set, consisting of the chars found in the first input.
+The objective is to find the shortest substring within the first input which contains all characters from the
+control set.
+ */
 public class InterviewKickStartShortestSubstringContainingControlSet {
 
     public static void main(String[] args) {
@@ -34,8 +39,6 @@ public class InterviewKickStartShortestSubstringContainingControlSet {
                 String tempSubstring = input.substring(start,end);
                 output = output.length() < tempSubstring.length() ? output : tempSubstring ;
                 i = start;
-                start = 0;
-                end = 0;
                 temp = new HashSet<>(controlSet);
             }
         }
