@@ -54,6 +54,17 @@ public class Life360ScanArrayToMatchTargetNumber {
 
     }
 
+    /**
+     *
+     * @param input
+     * @param target
+     * @param result
+     * @param index
+     * @param sum == approach 1
+     * @param sum1 == approach 2
+     * @param baseIndex
+     * @param result1
+     */
     public static void recursion(int[] input, int target, ArrayList<Integer> result, int index, int sum, int sum1, int baseIndex,
                                 ArrayList<Integer> result1) {
 
