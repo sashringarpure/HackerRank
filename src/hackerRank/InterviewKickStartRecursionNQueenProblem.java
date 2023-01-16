@@ -90,81 +90,91 @@ import java.util.*;
 
 public class InterviewKickStartRecursionNQueenProblem {
 
-    private static List<String[]> solutions = new ArrayList<String[]>();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        int n = 4;
-        //false means not selected
-        boolean[] cols = new boolean[n];
-        boolean[] lDiag = new boolean[(n*2)-1];
-        boolean[] rDiag = new boolean[(n*2)-1];
-        char[][] board = new char[n][n];
+//        FileReader fr = new FileReader("/Users/sshringarpure/IdeaProjects/Interview/src/input.txt");
+//        BufferedReader br = new BufferedReader(fr);
+//        String line = "";
+//        HashMap<String, Integer> hm = new HashMap<String, Integer>();
+//        while ( (line = br.readLine()) != null) {
+//            if ( hm.containsKey(line) ) {}
+//            else {
+//                System.out.println(line);
+//                hm.put(line,1);
+//            }
+//
+//        }
+//
+//        assert line == "Hello";
 
-        for (char[] row: board) Arrays.fill(row,'-');
-
-        solveBoard(board, 0, cols, lDiag, rDiag);
-
-
+    int rows = 0;
+    int cols = 0;
+    int n = 4;
+    ArrayList<String> al = new ArrayList<String>();
+    recursiveCall(rows, cols, n, al);
     }
 
-    private static void solveBoard(char[][] board, int row, boolean[] cols, boolean[] lDiag, boolean[] rDiag) {
-
-        System.out.println("board length : " + board.length);
-        System.out.println("Row : " + row);
-        if (row == board.length) {
-
-            String[] solvedBoard = new String[board.length];
-
-            int solvedRow = 0;
-
-            for (char[] currRow: board) {
-                solvedBoard[solvedRow++] = String.valueOf(currRow);
-            }
-
-            solutions.add(solvedBoard);
-            for ( String[] s : solutions ) {
-                for ( String s1 : s ) {
-                    System.out.println( "solutions : " + s1);
-                }
-            }
-
+    public static void recursiveCall(int row, int col, int n, ArrayList al) {
+        if ( row == 0 && col == n ) {
+            return;
         } else {
-
-            for (int col = 0; col < cols.length; col++) {
-                System.out.println("Row :" + row + " Col : " + col) ;
-                if (selectCol(row,col,cols,lDiag,rDiag)) {
-
-                    board[row][col] = 'q';
-
-                    System.out.println("Queen placed at row : " + row + " and col : " + col);
-                    solveBoard(board,row + 1, cols, lDiag, rDiag);
-
-                    board[row][col] = '-';
-                    System.out.println("Queen removed at row : " + row + " and col : " + col);
-
-                    deselectCol(row,col,cols,lDiag,rDiag);
+            while ( row < n && col < n) {
+                int i = row+1;
+                al.add(row+","+col);
+                for (int j = 0; j < n ; j++) {
+                    if ( canBeOccupied(i, j, al, n) ){
+                        al.add(i+","+j);
+                        if ( i == (n-1) ) {
+                            break;
+                        } else {
+                            i = i + 1;
+                            j = -1;
+                        }
+                    } else {
+                        if ( al.size() != n && row == (n-1) && col == (n-1) ) {
+                            al.clear();
+                            break;
+                        }
+                        if ( i < (n-1) && j == (n-1) ) {
+                            i = i+1;
+                            j=-1;
+                        }
+                    }
                 }
+                col++;
+                row=0;
+                System.out.println(al);
+                al.clear();
             }
-
         }
+        recursiveCall(row,col,n, al);
     }
 
-    private static boolean selectCol(int row, int col, boolean[] cols, boolean[] lDiag, boolean[] rDiag) {
-
-            if (!cols[col] && ! lDiag[row + col] && !rDiag[row + cols.length-1 - col]) {
-            cols[col] = true;
-            lDiag[row + col] = true;
-            rDiag[row + cols.length-1 - col] = true;
-            return true;
+    public static boolean canBeOccupied(int i, int j, ArrayList<String> al, int n) {
+      //same row check.
+        int x=i;
+        int y=j;
+        while (x >= 0) {
+            if ( al.contains(x+","+y)) return false;
+            x--;
         }
-        else {
-            return false;
+     //Diagonal check - from left to right.
+        x=i;
+        y=j;
+        while ( x>=0 && y<=n) {
+            if ( al.contains(x+","+y)) return false;
+            x--;
+            y++;
         }
+     //Diagonal check - from right to left
+        x=i;
+        y=j;
+        while ( x>=0 && y>=0) {
+            if ( al.contains(x+","+y)) return false;
+            x--;
+            y--;
+        }
+        return true;
     }
-
-    private static void deselectCol(int row, int col, boolean[] cols, boolean[] lDiag, boolean[] rDiag) {
-        cols[col] = false;
-        lDiag[row + col] = false;
-        rDiag[row + cols.length-1 - col] = false;
-    }
+ 
 }
