@@ -90,7 +90,7 @@ import java.util.*;
 
 public class InterviewKickStartRecursionNQueenProblem {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
 
 //        FileReader fr = new FileReader("/Users/sshringarpure/IdeaProjects/Interview/src/input.txt");
 //        BufferedReader br = new BufferedReader(fr);
