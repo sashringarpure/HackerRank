@@ -2,9 +2,16 @@ package hackerRank;
 
 import java.util.HashMap;
 
+/*
+ * 1. If the next character is greater than the current character then subtract the current value from the
+ * next value and then add to the result.
+ * 2. If the current character is greater than the next character then, then, add the current character value
+ * to the result.
+ */
+
 public class LeetCodeRomanToInteger {
     public static void main(String[] args) {
-        String s = "MDCLXVI";
+        String s = "MCMXCIV";
         int i = 0;
         int result = 0;
         HashMap<String, Integer> hm = new HashMap<String, Integer>();
