@@ -1,3 +1,5 @@
+package hackerRank;
+
 import java.util.HashMap;
 /*
 Logic:

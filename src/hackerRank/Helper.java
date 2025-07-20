@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.*;
+import java.time.Duration;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +39,7 @@ public class Helper {
      *
      */
     public void waitForObjectClikable(WebElement wl, int timeInSec) {
-        WebDriverWait wait = new WebDriverWait(drv, timeInSec);
+        WebDriverWait wait = new WebDriverWait(drv, Duration.ofSeconds(timeInSec));
         try {
             wait.until(ExpectedConditions.elementToBeClickable(wl));
         } catch (Exception e) {
@@ -52,7 +53,7 @@ public class Helper {
      * @param timeInSec
      */
     public void waitForObjectVisible(WebElement wl, int timeInSec) {
-        WebDriverWait wait = new WebDriverWait(drv, timeInSec);
+        WebDriverWait wait = new WebDriverWait(drv, Duration.ofSeconds(timeInSec));
         try {
             wait.until(ExpectedConditions.visibilityOf(wl));
         } catch (Exception e) {
